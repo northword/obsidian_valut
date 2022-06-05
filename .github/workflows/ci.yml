@@ -18,13 +18,19 @@ jobs:
           python-version: 3.10.2
       - name: get changed files
         uses: tj-actions/changed-files@v21
+        id: changed-files
         with:
           since_last_remote_commit: true
       - name: obs2mk source files
+        if: steps.changed-files.outputs.files_changed == 'true'
         run: |
           pip install obs2mk
+          echo "111111"
           echo "${{ steps.changed-files.outputs.all_changed_files }}"
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+          echo "2222"
+          echo "${{ steps.changed-files.outputs.changed_files }}
+          echo "2222"
+          for file in ${{ steps.changed-files.outputs.changed_files }}; do
             if [[ "$file" == *md ]] 
               then
                 echo "$file"
