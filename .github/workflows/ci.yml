@@ -26,6 +26,7 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == *md ]] 
               then
+                echo $file
                 obs2mk --mininal file "$file"
               fi
             done
