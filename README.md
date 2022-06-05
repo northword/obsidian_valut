@@ -1,29 +1,43 @@
-<h1 align="center"><a href="https://mara-li.github.io/mkdocs_obsidian_template/documentation/start_here/">TEMPLATE DOCUMENTATION</a></h1>
+In your new `publish_blog` folder, you will spot a `mkdocs.yml`. This file allows you to customize your blog! The most important to edit :
+1. `site_name` 
+2. `site_description`
+3. `site_url` (critical) : By default, it's `https://github_username.io/repo_name`[^1]
 
----
-<p align="center">
-	<a href="https://github.com/Mara-Li/mkdocs_obsidian_publish"><img src="https://img.shields.io/github/license/Mara-Li/YAFPA-python"></img></a>
-	<a href="https://www.python.org/"><img src="https://img.shields.io/pypi/pyversions/obs2mk"></img></a>
-	<a href="https://pypi.org/project/obs2mk/"><img src="https://img.shields.io/pypi/v/obs2mk"></img></a>
-	<a href="https://obsidian.md/"><img src="https://img.shields.io/badge/Auxiliary%20Tool-Obsidian-blueviolet"></img></a>
-</p>
+To edit the logo and the favicon, first put the chosen file in `assets/logo`, and change `logo` and `favicon` :
+1. `logo: assets/logo/logo_name.png`
+2. `favicon: assets/logo/favicon.png`
 
-# TLDR
-1. Install / update with `pip install obs2mk --upgrade`
-2. Template the blog, clone it and configure the blog. 
-3. Configure the script (first run)
-4. Add `share: true` in Obsidian's note frontmatter
-5. Customize the `category` key in Obsidian's note frontmatter
-6. Run the script `obs2mk`
+You can customize :
+- Font
+- Color scheme, palette, icons 
+- Language  
 
-# Quick installation tutorial
-1. Click on [use this template](https://github.com/Mara-Li/mkdocs_obsidian_template/generate)[^1]
-2. Use the name of your choice.
-3. Click on [code](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories) → SSH ; Copy the link
-4. Run (in terminal):
-```bash
-git clone [[PASTE THE LINK HERE]] publish_blog
-pip install obs2mk --upgrade
+[Check the documentation to get more information](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/)
+
+You don't need to touch anything in `features` ; `markdown_extensions…`
+
+## Local testing (optional)
+
+To run locally the blog, you need to install the requirements and run `mkdocs serve`.
+```
+cd publish_blog
+pip install -r requirements.txt
+mkdocs serve
 ```
 
-[^1]: You must be connected to copy the template ! You can test locally through clone > https : `git clone https://github.com/Mara-Li/mkdocs_obsidian_template.git` or with downloading the ZIP
+The blog will be published through [GitHub Page](https://pages.github.com/) using the `gh-page` branch. In case your blog is not published through mkdocs :
+- Check the `gh-pages` branch and activate it if necessary in `Settings` → `Pages` : ![image](https://user-images.githubusercontent.com/30244939/166161220-973cee87-75eb-4b9f-b521-1c67d273def7.png)
+- Check if workflow run normally :
+  - Check the run and error in `Actions` 
+  - Check if the actions have the good write and read access in `settings → Actions → General → workflow permission` ![image](https://user-images.githubusercontent.com/30244939/166161294-0f4f70c2-fda5-4465-89b0-d6b1b5e6995d.png)
+
+
+---
+
+- [Main Repo](https://github.com/Mara-Li/obsidian_mkdocs_publisher)
+- [Obsidian Plugin](https://github.com/Mara-Li/obsidian-mkdocs-publisher-plugin/)
+- [Python package](https://github.com/Mara-Li/obsidian-mkdocs-publisher-python)
+- [Template](https://github.com/Mara-Li/obsidian-mkdocs-publisher-template)
+- [Documentation](https://mara-li.github.io/obsidian_mkdocs_publisher_docs/)
+
+[^1]: You can found the link in Repository settings > Pages. 

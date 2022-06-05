@@ -26,9 +26,8 @@
     filter: saturate(200%);
 }
 
-
 .md-footer {
-    display: none;
+    /* display: none; */
 }
 
 .dataview {
@@ -36,7 +35,7 @@
 }
 
 .tooltip_templates {
-    display: none;
+    /* display: none; */
 }
 
 [data-md-color-scheme="slate"] .tooltipster-sidetip .tooltipster-box {
@@ -71,8 +70,6 @@
 }
 
 .citation {
-    margin: 0 10%;
-    margin-left: 0;
     padding: 10px;
     border-radius: 5px;
 }
@@ -89,5 +86,9 @@
 }
 
 code {
-  display: inline-block;
+    display: inline-block;
+}
+
+.md-typeset :is(.admonition, details){
+    font-size: 1em;
 }
