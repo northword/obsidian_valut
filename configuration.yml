@@ -20,3 +20,14 @@ minimal:
     index: (i)
     share: share
   weblink: null
+northword:
+  configuration:
+    input: ./src
+    output: ./docs
+  frontmatter:
+    category:
+      default value: notes
+      key: category
+    index: (i)
+    share: share
+  weblink: null
