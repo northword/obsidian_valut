@@ -1,8 +1,10 @@
+---
+---
 # Index
 
 首页
-> [!TIP]
-> cesifbckbe
+!!! TIP
+	cesifbckbe
 
 七十七
 sc  vccscscscscccsvdv ss
