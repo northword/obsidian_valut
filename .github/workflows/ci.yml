@@ -27,7 +27,7 @@ jobs:
           echo "111111"
           echo "${{ steps.changed-files.outputs.all_changed_files }}"
           echo "2222"
-          echo "steps.changed-files.outputs.any_changed"
+          echo "${{steps.changed-files.outputs.any_changed}}"
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == *md ]] 
               then
@@ -40,7 +40,7 @@ jobs:
       #     pip install -r requirements.txt
       #     mkdocs gh-deploy --force --clean
       - name: Push updateds files
-        if: steps.changed-files.outputs.any_changed == 'true'
+        # if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           git pull
           git config --global user.name 'github-actions'
