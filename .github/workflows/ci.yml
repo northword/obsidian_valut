@@ -26,20 +26,27 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == *md ]] 
               then
-                obs2mk --use northword file "$file"
+                obs2mk --mininal file "$file"
               fi
             done
-      - name: Mkdocs build
-        run: |
-          pip install -r requirements.txt
-          mkdocs gh-deploy --force --clean
+      # - name: Mkdocs build
+      #   run: |
+      #     pip install -r requirements.txt
+      #     mkdocs gh-deploy --force --clean
       - name: Push updateds files
         run: |
-          git pull
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@users.noreply.github.com'
-          rm -rf ./site/
-          git add . 
-          fileList=$(git status --porcelain | tr -d '\n' | tr -d 'M' |tr -d '??')
-          git commit -m "🏓 Publishing from ObsidianMD" -m "${fileList}"
-          git push
+          # git pull
+          # git config --global user.name 'github-actions'
+          # git config --global user.email 'github-actions@users.noreply.github.com'
+          # rm -rf ./site/
+          # git add . 
+          # fileList=$(git status --porcelain | tr -d '\n' | tr -d 'M' |tr -d '??')
+          # git commit -m "🏓 Publishing from ObsidianMD" -m "${fileList}"
+          # git push
+        git branch mkdocs
+        git stash
+        git checkout mkdocs
+        git stash pop
+        git add .
+        git commit -m "converted by obs2mk"
+        git push origin mkdocs
