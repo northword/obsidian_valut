@@ -6,3 +6,6 @@
 
 七十七
 sc  vccscscscscccsvdv ss
+
+> [!TIP]
+> 测试警告
