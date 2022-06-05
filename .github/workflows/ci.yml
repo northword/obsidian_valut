@@ -26,7 +26,7 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == *md ]] 
               then
-                obs2mk --northword file "$file"
+                obs2mk --use northword file "$file"
               fi
             done
       - name: Mkdocs build
