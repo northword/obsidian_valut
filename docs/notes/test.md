@@ -8,5 +8,5 @@ wsscs
 你撒娇妇女。
 ccsvscsccscscscscscsscsss
 
-> [!TIP]
-> 测试警告
+!!! TIP
+	测试警告
