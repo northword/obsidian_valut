@@ -22,8 +22,8 @@ minimal:
   weblink: null
 northword:
   configuration:
-    input: ./src
-    output: ./docs
+    input: ./docs
+    output: ./ob2mk
   frontmatter:
     category:
       default value: notes
