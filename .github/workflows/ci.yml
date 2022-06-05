@@ -31,7 +31,7 @@ jobs:
             if [[ "$file" == *md ]] 
               then
                 echo "$file"
-                obs2mk --mininal file "$file"
+                obs2mk --minimal file "$file"
               fi
             done
       # - name: Mkdocs build
