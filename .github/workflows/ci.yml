@@ -22,14 +22,13 @@ jobs:
           since_last_remote_commit: true
       - name: obs2mk source files
         run: |
-          # pip install obs2mk
-          # for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-          #   if [[ "$file" == *md ]] 
-          #     then
-          #       obs2mk --mininal file "$file"
-          #     fi
-          #   done
-          obs2mk --mininal
+          pip install obs2mk
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [[ "$file" == *md ]] 
+              then
+                obs2mk --mininal file "$file"
+              fi
+            done
       # - name: Mkdocs build
       #   run: |
       #     pip install -r requirements.txt
