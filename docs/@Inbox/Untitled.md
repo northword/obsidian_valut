@@ -2,7 +2,7 @@
 title: 
 date: 2020-12-11 21:01:17
 updated: 2022-06-05 19:15:46
-share: true
+share: True
 ---
 11
 
@@ -20,28 +20,30 @@ share: true
 - [x] 111
 行内代码 `hahahha`
 
->[!tip]
->ceshiceshi
+!!! tip
+	ceshiceshi
 
-> [!quate] ceshi
->111
->
+!!! NOTE "ceshi"
+	111
+	
 
 ```python:main.py
 hahahahha
 ```
+
 
 测试
 | 测试             | ahahah    | jjjs |
 | ---------------- | --------- | ---- |
 | 测试测试测试 111 | hahahahha |      |
 
-> 11111
+	11111
 
 ```html
 <div>
 </div>
 ```
+
 
 | reaction                 | rf      | rb       | r       | XRC      |
 | ------------------------ | ------- | -------- | ------- | -------- |
