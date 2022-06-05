@@ -27,6 +27,7 @@ jobs:
           echo "111111"
           echo "${{ steps.changed-files.outputs.all_changed_files }}"
           echo "2222"
+          echo "steps.changed-files.outputs.any_changed"
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == *md ]] 
               then
