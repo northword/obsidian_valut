@@ -43,10 +43,10 @@ jobs:
           # fileList=$(git status --porcelain | tr -d '\n' | tr -d 'M' |tr -d '??')
           # git commit -m "🏓 Publishing from ObsidianMD" -m "${fileList}"
           # git push
-        git branch mkdocs
-        git stash
-        git checkout mkdocs
-        git stash pop
-        git add .
-        git commit -m "converted by obs2mk"
-        git push origin mkdocs
+          git branch mkdocs
+          git stash
+          git checkout mkdocs
+          git stash pop
+          git add .
+          git commit -m "converted by obs2mk"
+          git push origin mkdocs
