@@ -23,6 +23,7 @@ jobs:
       - name: obs2mk source files
         run: |
           pip install obs2mk
+          echo ${{ steps.changed-files.outputs.all_changed_files }}
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == *md ]] 
               then
