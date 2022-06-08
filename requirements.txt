@@ -7,4 +7,5 @@ mdx_breakless_lists
 mkdocs-preview-links-plugin
 mkdocs-embed-file-plugins
 Markdown
-mkdocs-git-revision-date-plugin
+mkdocs-git-revision-date-localized-plugin
+mkdocs-callouts

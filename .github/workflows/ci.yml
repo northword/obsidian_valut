@@ -1,8 +1,8 @@
 name: ci
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
     # paths:
     #   - 'docs/**'
 
@@ -24,7 +24,6 @@ jobs:
       - name: obs2mk source files
         run: |
           pip install obs2mk
-          echo "${{steps.changed-files.outputs.any_changed}}111"
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" == *md ]] 
               then
