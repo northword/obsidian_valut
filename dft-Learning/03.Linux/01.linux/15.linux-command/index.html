@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="北辞的博客" name="description"/>
+  <link href="https://blog.northword.cn/dft-Learning/03.Linux/01.linux/15.linux-command/" rel="canonical"/>
+  <link href="../../../../assets/logo/favicons.png" rel="icon"/>
+  <meta content="mkdocs-1.3.0, mkdocs-material-8.3.3" name="generator"/>
+  <title>
+   Linux 常用命令 - 北辞
+  </title>
+  <link href="../../../../assets/stylesheets/main.4a0965b7.min.css" rel="stylesheet"/>
+  <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Karla:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   :root{--md-text-font:"Karla";--md-code-font:"Ubuntu Mono"}
+  </style>
+  <link href="../../../../assets/css/utils.css" rel="stylesheet"/>
+  <script>
+   __md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+  </script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+  <!-- <script>
+                $(document).ready(function() {
+                    $('.link-tooltip').tooltipster();
+                });
+        </script> -->
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" referrerpolicy="no-referrer" rel="stylesheet">
+   <meta content="Linux 常用命令" property="og:title"/>
+   <meta content="Linux 常用命令" name="twitter:title"/>
+   <meta content="北辞的博客" name="og:description"/>
+   <meta content="北辞的博客" name="twitter:description"/>
+   <meta content="summary" name="twitter:card"/>
+   <meta content="https://blog.northword.cn//assets/logo/LOGO_SEO.png" property="og:image"/>
+   <meta content="https://blog.northword.cn//assets/logo/LOGO_SEO.png" name="twitter:image"/>
+  </link>
+ </head>
+ <body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+  <script>
+   var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])
+  </script>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#linux-常用命令">
+    跳转至
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header md-header--lifted" data-md-component="header">
+   <nav aria-label="页眉" class="md-header__inner md-grid">
+    <a aria-label="北辞" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="北辞">
+     <img alt="logo" src="../../../../assets/logo/favicons.png"/>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        北辞
+       </span>
+      </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        Linux 常用命令
+       </span>
+      </div>
+     </div>
+    </div>
+    <form class="md-header__option" data-md-component="palette">
+     <input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+     <label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z">
+       </path>
+      </svg>
+     </label>
+     <input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+     <label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z">
+       </path>
+      </svg>
+     </label>
+    </form>
+    <label class="md-header__button md-icon" for="__search">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+     <label class="md-search__overlay" for="__search">
+     </label>
+     <div class="md-search__inner" role="search">
+      <form class="md-search__form" name="search">
+       <input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+       <label class="md-search__icon md-icon" for="__search">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z">
+         </path>
+        </svg>
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z">
+         </path>
+        </svg>
+       </label>
+       <nav aria-label="查找" class="md-search__options">
+        <button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" type="reset">
+         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z">
+          </path>
+         </svg>
+        </button>
+       </nav>
+      </form>
+      <div class="md-search__output">
+       <div class="md-search__scrollwrap" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+         <div class="md-search-result__meta">
+          正在初始化搜索引擎
+         </div>
+         <ol class="md-search-result__list">
+         </ol>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav>
+   <nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../../..">
+        Title
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link md-tabs__link--active" href="../../../">
+        计算模拟学习笔记
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../../../notes/test/">
+        Test
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="北辞" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="北辞">
+           <img alt="logo" src="../../../../assets/logo/favicons.png"/>
+          </a>
+          北辞
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../..">
+            Title
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+           <div class="md-nav__link md-nav__link--index">
+            <a href="../../../">
+             计算模拟学习笔记
+            </a>
+            <label for="__nav_2">
+             <span class="md-nav__icon md-icon">
+             </span>
+            </label>
+           </div>
+           <nav aria-label="计算模拟学习笔记" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_2">
+             <span class="md-nav__icon md-icon">
+             </span>
+             计算模拟学习笔记
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../01.Theory/00.README/">
+               理论知识
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_3">
+               01.安装
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="01.安装" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_3">
+                <span class="md-nav__icon md-icon">
+                </span>
+                01.安装
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/00.requirements/">
+                  软件列表
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/01.windows-apps/">
+                  Windows 平台的部分软件
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/02.install-python/">
+                  安装 python
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/03.install-ase/">
+                  安装 ASE
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/21.linux-install-vaspkit/">
+                  安装 VASPKIT
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/22.linux-install-vtstScript/">
+                  VTST-Script
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/23.linux-install-lrzsz/">
+                  linux 安装 lrzsz
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/31.linux-install-app-for-nonRoot/">
+                  linux 非 ROOT 用户如何安装软件
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/32.linux-install-gnuplot/">
+                  linux 编译 gnuplot
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/33.linux-install-python-for-nonRoot/">
+                  linux 编译 py3
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../02.Install/01.%E5%AE%89%E8%A3%85/34.linux-install-vtst-vasp/">
+                  编译 VASP with VTST
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+              <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_4">
+               Linux 使用
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="Linux 使用" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_4">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Linux 使用
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+                 <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_4_1">
+                  01.linux
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="01.linux" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_4_1">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   01.linux
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../00.linux/">
+                     关于 linux
+                    </a>
+                   </li>
+                   <li class="md-nav__item md-nav__item--active">
+                    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+                    <label class="md-nav__link md-nav__link--active" for="__toc">
+                     Linux 常用命令
+                     <span class="md-nav__icon md-icon">
+                     </span>
+                    </label>
+                    <a class="md-nav__link md-nav__link--active" href="./">
+                     Linux 常用命令
+                    </a>
+                    <nav aria-label="目录" class="md-nav md-nav--secondary">
+                     <label class="md-nav__title" for="__toc">
+                      <span class="md-nav__icon md-icon">
+                      </span>
+                      目录
+                     </label>
+                     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#cdchange-directory">
+                        cd：Change Directory
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#ls-与-lllist">
+                        ls 与 ll：list
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#mkdirmake-directory">
+                        mkdir：Make Directory
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#cpcopy">
+                        cp：Copy
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#mvmove">
+                        mv：Move
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#rmremove">
+                        rm：Remove
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#rmdir-remove-directory">
+                        rmdir ：Remove Directory
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#pwd-print-working-directory">
+                        pwd ：Print Working Directory
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#catconcatenate-and-print-files">
+                        cat：concatenate and print files
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#tar">
+                        tar
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#grep">
+                        grep
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#chown">
+                        chown
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#chmod">
+                        chmod
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#find">
+                        find
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#ps">
+                        ps
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#kill">
+                        kill
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#killall">
+                        killall
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#file">
+                        file
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#chgrp">
+                        chgrp
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#gcc">
+                        gcc
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#time">
+                        time
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../16.linux-vi/">
+                     vi 编辑器
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../17.linux-lrzsz-usage/">
+                     lrzsz 使用方法
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../19.linux-bashrc-VS-bash_profile/">
+                     .bashrc 与  .bash_profile
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" id="__nav_2_4_2" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_4_2">
+                  02.pbs
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="02.pbs" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_4_2">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   02.pbs
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../02.pbs/01.PBS-README/">
+                     PBS
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../02.pbs/02.PBS-commend/">
+                     管理作业
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../02.pbs/03.PBS-script/">
+                     PBS 脚本
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_5">
+               Materials Studio 使用
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="Materials Studio 使用" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_5">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Materials Studio 使用
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../04.Materials-Studio/00.README/">
+                  Mat.Studio 操作
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../04.Materials-Studio/02.note/">
+                  建模中的一些小疑惑
+                 </a>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_3" id="__nav_2_5_3" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_5_3">
+                  05.example
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="05.example" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_5_3">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   05.example
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../04.Materials-Studio/05.example/11.task-model-of-CO-absorption-on-Au%20copy/">
+                     作业：CO吸附在Au上建模
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../04.Materials-Studio/05.example/12.task-model-of-Rectangular-graphene/">
+                     作业：矩形石墨烯建模
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_6">
+               VASP
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="VASP" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_6">
+                <span class="md-nav__icon md-icon">
+                </span>
+                VASP
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_6_1">
+                  01.VASP输入输出文件
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="01.VASP输入输出文件" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_6_1">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   01.VASP输入输出文件
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/00.README/">
+                     VASP 简介
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/01.vasp-input-files/">
+                     VASP 的输入文件
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/02.vasp-input-files-INCAR/">
+                     常用的 INCAR 标签
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/03.vasp-input-files-gen/">
+                     准备 VASP 的输入文件
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/05.vasp-output-files/">
+                     VASP 的输出文件
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_6_2">
+                  02.优化
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="02.优化" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_6_2">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   02.优化
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/02.vasp-opt/">
+                     结构优化、自洽、非自洽
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/03.vasp-bulk/">
+                     晶格常数计算
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/04.vasp-DFT-plus-U/">
+                     DFT+U
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/05.vasp-surface-energy/">
+                     表面能的计算
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/06.vasp-adsorption-energy/">
+                     吸附能的计算
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_3" id="__nav_2_6_3" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_6_3">
+                  03.电子结构
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="03.电子结构" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_6_3">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   03.电子结构
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/03.%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/02.vasp-chg-diff/">
+                     电荷密度差分
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/03.%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/03.vasp-chg-split/">
+                     自旋电荷密度
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/03.%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/04.vasp-DOS/">
+                     态密度分析
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/03.%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/05.vasp-chg-bader/">
+                     Bader 电荷分析
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_4" id="__nav_2_6_4" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_6_4">
+                  04.反应路径
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="04.反应路径" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_6_4">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   04.反应路径
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/04.%E5%8F%8D%E5%BA%94%E8%B7%AF%E5%BE%84/01.vasp-neb/">
+                     NEB 查找过渡态
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/04.%E5%8F%8D%E5%BA%94%E8%B7%AF%E5%BE%84/02.vasp-dimer/">
+                     Dimer 方法
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/04.%E5%8F%8D%E5%BA%94%E8%B7%AF%E5%BE%84/03.vasp-frequency-analysis/">
+                     频率分析
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../05.VASP/05.%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6/01.vasp-md/">
+                  分子动力学
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../05.VASP/08.%E5%85%B6%E4%BB%96/01.K-PATH/">
+                  K-PATH
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_7">
+               其他应用
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="其他应用" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_7">
+                <span class="md-nav__icon md-icon">
+                </span>
+                其他应用
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../06.Other%20App/00.README/">
+                  README
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../06.Other%20App/01.ASE-usage/">
+                  ASE-usage
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_8">
+               错误排查
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="错误排查" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_8">
+                <span class="md-nav__icon md-icon">
+                </span>
+                错误排查
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../09.Others/01.MS-NoResponse-win2004/">
+                  MS 在 win2004 及以上一按鼠标就卡住
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../09.Others/03.numpy-in-win20H2/">
+                  numpy 在 win2004 及以上报错
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../09.Others/99.on-the-end/">
+                  on-the-end
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../../notes/test/">
+            Test
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="目录" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          目录
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#cdchange-directory">
+            cd：Change Directory
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#ls-与-lllist">
+            ls 与 ll：list
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#mkdirmake-directory">
+            mkdir：Make Directory
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#cpcopy">
+            cp：Copy
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#mvmove">
+            mv：Move
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#rmremove">
+            rm：Remove
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#rmdir-remove-directory">
+            rmdir ：Remove Directory
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#pwd-print-working-directory">
+            pwd ：Print Working Directory
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#catconcatenate-and-print-files">
+            cat：concatenate and print files
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#tar">
+            tar
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#grep">
+            grep
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#chown">
+            chown
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#chmod">
+            chmod
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#find">
+            find
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#ps">
+            ps
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#kill">
+            kill
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#killall">
+            killall
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#file">
+            file
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#chgrp">
+            chgrp
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#gcc">
+            gcc
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#time">
+            time
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content" data-md-component="content">
+      <article class="md-content__inner md-typeset">
+       <h1 id="linux-常用命令">
+        Linux 常用命令
+        <a class="headerlink" href="#linux-常用命令" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <table>
+        <thead>
+         <tr>
+          <th>
+           命令
+          </th>
+          <th>
+           说明
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           <code>
+            cd
+           </code>
+          </td>
+          <td>
+           切换目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            ls
+           </code>
+          </td>
+          <td>
+           列出文件和目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            ll
+           </code>
+          </td>
+          <td>
+           同上
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            mkdir
+           </code>
+          </td>
+          <td>
+           新建文件夹
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cp
+           </code>
+          </td>
+          <td>
+           复制
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            mv
+           </code>
+          </td>
+          <td>
+           移动
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            rm
+           </code>
+          </td>
+          <td>
+           删除文件
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            rmdir
+           </code>
+          </td>
+          <td>
+           删除目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            pwd
+           </code>
+          </td>
+          <td>
+           当前目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cat
+           </code>
+          </td>
+          <td>
+           查看文件全文
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            tail
+           </code>
+          </td>
+          <td>
+           预览文件后几行
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            tar
+           </code>
+          </td>
+          <td>
+           压缩/解压缩
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <h2 id="cdchange-directory">
+        cd：Change Directory
+        <a class="headerlink" href="#cdchange-directory" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        切换当前目录，可以是绝对路径，也可以是相对路径。如：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nb">cd</span> /root/Docements <span class="c1"># 切换到目录/root/Docements</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="nb">cd</span> ./path          <span class="c1"># 切换到当前目录下的path目录中，“.”表示当前目录  </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="nb">cd</span> ../path         <span class="c1"># 切换到上层目录中的path目录中，“..”表示上一层目录</span>
+</code></pre>
+       </div>
+       <table>
+        <thead>
+         <tr>
+          <th>
+           命令
+          </th>
+          <th>
+           解释
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           <code>
+            cd
+           </code>
+          </td>
+          <td>
+           进入用户主目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cd ~
+           </code>
+          </td>
+          <td>
+           进入用户主目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cd -
+           </code>
+          </td>
+          <td>
+           返回进入此目录之前所在目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cd $OLDPWD
+           </code>
+          </td>
+          <td>
+           同上，但前者会屏显上次的目录，这个不会
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cd ..
+           </code>
+          </td>
+          <td>
+           返回上一级目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cd ../..
+           </code>
+          </td>
+          <td>
+           返回上两级目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cd !$
+           </code>
+          </td>
+          <td>
+           把上个命令的参数作为 cd 参数使用
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cd /
+           </code>
+          </td>
+          <td>
+           进入根目录
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            cd .
+           </code>
+          </td>
+          <td>
+           当前目录
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <h2 id="ls-与-lllist">
+        ls 与 ll：list
+        <a class="headerlink" href="#ls-与-lllist" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        <code>
+         ls
+        </code>
+        ：查看文件与目录，参数如下
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>-l ：列出长数据串，包含文件的属性与权限数据等
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>-a ：列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来（常用）
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a>-d ：仅列出目录本身，而不是列出目录的文件数据
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a>-h ：将文件容量以较易读的方式（GB，kB等）列出来
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a>-R ：连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来
+</code></pre>
+       </div>
+       <p>
+        值得一提的是
+        <code>
+         -l
+        </code>
+        参数，它可以用
+        <code>
+         ll
+        </code>
+        来简化，如下例：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">[</span>zjb@op app<span class="o">]</span>$ ls
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a>get-pip.py  pot_database  python38  Python-3.8.5  scripts  tgz_backup  vaspkit.1.12  vtstscripts-933
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="o">[</span>zjb@op app<span class="o">]</span>$ ls -l
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a>total <span class="m">1875</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a>-rw-r--r--  <span class="m">1</span> zjb energy <span class="m">1886796</span> Oct <span class="m">18</span> <span class="m">06</span>:00 get-pip.py
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a>drwxr-xr-x  <span class="m">4</span> zjb energy    <span class="m">4096</span> Dec  <span class="m">1</span>  <span class="m">2018</span> pot_database
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a>drwxr-xr-x  <span class="m">6</span> zjb energy    <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">14</span>:59 python38
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a>drwxr-xr-x <span class="m">18</span> zjb energy    <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">14</span>:57 Python-3.8.5
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a>drwxr-xr-x  <span class="m">2</span> zjb energy    <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">15</span>:11 scripts
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a>drwxr-xr-x  <span class="m">2</span> zjb energy    <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">17</span>:48 tgz_backup
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a>drwxr-xr-x  <span class="m">7</span> zjb energy    <span class="m">4096</span> Oct  <span class="m">9</span> <span class="m">16</span>:50 vaspkit.1.12
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a>drwxr-xr-x  <span class="m">5</span> zjb energy    <span class="m">8192</span> Dec <span class="m">28</span>  <span class="m">2017</span> vtstscripts-933
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><a href="#__codelineno-2-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><a href="#__codelineno-2-15"><span class="linenos" data-linenos="15 "></span></a><span class="o">[</span>zjb@op app<span class="o">]</span>$ ll
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><a href="#__codelineno-2-16"><span class="linenos" data-linenos="16 "></span></a>total <span class="m">1875</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><a href="#__codelineno-2-17"><span class="linenos" data-linenos="17 "></span></a>-rw-r--r--  <span class="m">1</span> zjb energy <span class="m">1886796</span> Oct <span class="m">18</span> <span class="m">06</span>:00 get-pip.py
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><a href="#__codelineno-2-18"><span class="linenos" data-linenos="18 "></span></a>drwxr-xr-x  <span class="m">4</span> zjb energy    <span class="m">4096</span> Dec  <span class="m">1</span>  <span class="m">2018</span> pot_database
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><a href="#__codelineno-2-19"><span class="linenos" data-linenos="19 "></span></a>drwxr-xr-x  <span class="m">6</span> zjb energy    <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">14</span>:59 python38
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><a href="#__codelineno-2-20"><span class="linenos" data-linenos="20 "></span></a>drwxr-xr-x <span class="m">18</span> zjb energy    <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">14</span>:57 Python-3.8.5
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><a href="#__codelineno-2-21"><span class="linenos" data-linenos="21 "></span></a>drwxr-xr-x  <span class="m">2</span> zjb energy    <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">15</span>:11 scripts
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><a href="#__codelineno-2-22"><span class="linenos" data-linenos="22 "></span></a>drwxr-xr-x  <span class="m">2</span> zjb energy    <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">17</span>:48 tgz_backup
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><a href="#__codelineno-2-23"><span class="linenos" data-linenos="23 "></span></a>drwxr-xr-x  <span class="m">7</span> zjb energy    <span class="m">4096</span> Oct  <span class="m">9</span> <span class="m">16</span>:50 vaspkit.1.12
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><a href="#__codelineno-2-24"><span class="linenos" data-linenos="24 "></span></a>drwxr-xr-x  <span class="m">5</span> zjb energy    <span class="m">8192</span> Dec <span class="m">28</span>  <span class="m">2017</span> vtstscripts-933
+</code></pre>
+       </div>
+       <h2 id="mkdirmake-directory">
+        mkdir：Make Directory
+        <a class="headerlink" href="#mkdirmake-directory" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        创建文件夹
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>mkdir &lt;文件夹名称&gt;
+</code></pre>
+       </div>
+       <p>
+        例 行 9
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ ll
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a>total <span class="m">21</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a>drwxr-xr-x <span class="m">9</span> zjb energy <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">15</span>:10 app
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">19</span>:45 backup
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">21</span>:03 NaCl
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">25</span> <span class="m">22</span>:43 O2_opt
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a>drwxr-xr-x <span class="m">6</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">20</span>:07 <span class="nb">test</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a>-rw-r--r-- <span class="m">1</span> zjb energy <span class="m">1288</span> Oct <span class="m">31</span> <span class="m">17</span>:53 vasp.pbs
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ mkdir hahahahahahahha
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ ll
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a>total <span class="m">25</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a>drwxr-xr-x <span class="m">9</span> zjb energy <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">15</span>:10 app
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><a href="#__codelineno-4-13"><span class="linenos" data-linenos="13 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">19</span>:45 backup
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><a href="#__codelineno-4-14"><span class="linenos" data-linenos="14 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">21</span>:33 hahahahahahahha
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><a href="#__codelineno-4-15"><span class="linenos" data-linenos="15 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">21</span>:03 NaCl
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><a href="#__codelineno-4-16"><span class="linenos" data-linenos="16 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">25</span> <span class="m">22</span>:43 O2_opt
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><a href="#__codelineno-4-17"><span class="linenos" data-linenos="17 "></span></a>drwxr-xr-x <span class="m">6</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">20</span>:07 <span class="nb">test</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><a href="#__codelineno-4-18"><span class="linenos" data-linenos="18 "></span></a>-rw-r--r-- <span class="m">1</span> zjb energy <span class="m">1288</span> Oct <span class="m">31</span> <span class="m">17</span>:53 vasp.pbs
+</code></pre>
+       </div>
+       <h2 id="cpcopy">
+        cp：Copy
+        <a class="headerlink" href="#cpcopy" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        复制文件（夹），copy 之意，它还可以把多个文件一次性地复制到一个目录下， 它的常用参数如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>-a ：将文件的特性一起复制
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a>-p ：连同文件的属性一起复制，而非使用默认方式，与-a相似，常用于备份
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>-i ：若目标文件已经存在时，在覆盖时会先询问操作的进行
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a>-r ：递归持续复制，用于目录的复制行为
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a>-u ：目标文件与源文件有差异时才会复制
+</code></pre>
+       </div>
+       <p>
+        例如 ：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a>cp -a file1 file2 <span class="c1">#连同文件的所有特性把文件file1复制成文件file2</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="2 "></span></a>cp file1 file2 file3 dir/ <span class="c1">#把文件file1、file2、file3复制到目录dir中</span>
+</code></pre>
+       </div>
+       <h2 id="mvmove">
+        mv：Move
+        <a class="headerlink" href="#mvmove" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于移动文件、目录或更名，move 之意，它的常用参数如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a>-f ：force强制的意思，如果目标文件已经存在，不会询问而直接覆盖
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a>-i ：若目标文件已经存在，就会询问是否覆盖
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a>-u ：若目标文件已经存在，且比目标文件新，才会更新
+</code></pre>
+       </div>
+       <p>
+        注：该命令可以把一个文件或多个文件一次移动一个文件夹中，但是最后一个目标文件一定要是“目录”。
+       </p>
+       <p>
+        例如：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a>mv file1 file2 file3 dir/   <span class="c1"># 把文件file1、file2、file3移动到目录dir中</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos="2 "></span></a>mv file1 file2              <span class="c1"># 把文件file1重命名为file2</span>
+</code></pre>
+       </div>
+       <h2 id="rmremove">
+        rm：Remove
+        <a class="headerlink" href="#rmremove" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于删除文件或目录，remove，它的常用参数如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos="1 "></span></a>-f ：就是force的意思，忽略不存在的文件，不会出现警告消息
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos="2 "></span></a>-i ：互动模式，在删除前会询问用户是否操作
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos="3 "></span></a>-r ：递归删除，最常用于目录删除，它是一个非常危险的参数
+</code></pre>
+       </div>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ ll
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos=" 2 "></span></a>total <span class="m">25</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><a href="#__codelineno-10-3"><span class="linenos" data-linenos=" 3 "></span></a>drwxr-xr-x <span class="m">9</span> zjb energy <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">15</span>:10 app
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><a href="#__codelineno-10-4"><span class="linenos" data-linenos=" 4 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">19</span>:45 backup
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><a href="#__codelineno-10-5"><span class="linenos" data-linenos=" 5 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">21</span>:33 hahahahahahahha
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><a href="#__codelineno-10-6"><span class="linenos" data-linenos=" 6 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">21</span>:03 NaCl
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><a href="#__codelineno-10-7"><span class="linenos" data-linenos=" 7 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">25</span> <span class="m">22</span>:43 O2_opt
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><a href="#__codelineno-10-8"><span class="linenos" data-linenos=" 8 "></span></a>drwxr-xr-x <span class="m">6</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">20</span>:07 <span class="nb">test</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><a href="#__codelineno-10-9"><span class="linenos" data-linenos=" 9 "></span></a>-rw-r--r-- <span class="m">1</span> zjb energy <span class="m">1288</span> Oct <span class="m">31</span> <span class="m">17</span>:53 vasp.pbs
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><a href="#__codelineno-10-10"><span class="linenos" data-linenos="10 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ rm -r hahahahahahahha/
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><a href="#__codelineno-10-11"><span class="linenos" data-linenos="11 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ ll
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><a href="#__codelineno-10-12"><span class="linenos" data-linenos="12 "></span></a>total <span class="m">21</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><a href="#__codelineno-10-13"><span class="linenos" data-linenos="13 "></span></a>drwxr-xr-x <span class="m">9</span> zjb energy <span class="m">4096</span> Oct <span class="m">29</span> <span class="m">15</span>:10 app
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><a href="#__codelineno-10-14"><span class="linenos" data-linenos="14 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">19</span>:45 backup
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a><a href="#__codelineno-10-15"><span class="linenos" data-linenos="15 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">21</span>:03 NaCl
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a><a href="#__codelineno-10-16"><span class="linenos" data-linenos="16 "></span></a>drwxr-xr-x <span class="m">2</span> zjb energy <span class="m">4096</span> Oct <span class="m">25</span> <span class="m">22</span>:43 O2_opt
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a><a href="#__codelineno-10-17"><span class="linenos" data-linenos="17 "></span></a>drwxr-xr-x <span class="m">6</span> zjb energy <span class="m">4096</span> Oct <span class="m">31</span> <span class="m">20</span>:07 <span class="nb">test</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a><a href="#__codelineno-10-18"><span class="linenos" data-linenos="18 "></span></a>-rw-r--r-- <span class="m">1</span> zjb energy <span class="m">1288</span> Oct <span class="m">31</span> <span class="m">17</span>:53 vasp.pbs
+</code></pre>
+       </div>
+       <h2 id="rmdir-remove-directory">
+        rmdir ：Remove Directory
+        <a class="headerlink" href="#rmdir-remove-directory" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        删除指定目录。要么用
+        <code>
+         rm -r &lt;dir&gt;
+        </code>
+        要么用
+        <code>
+         rmdir &lt;dir&gt;
+        </code>
+        。更建议用
+        <code>
+         rmdir
+        </code>
+        。
+       </p>
+       <h2 id="pwd-print-working-directory">
+        pwd ：Print Working Directory
+        <a class="headerlink" href="#pwd-print-working-directory" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        打印当前工作路径。绝对路径。
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>zjb@op utilities<span class="o">]</span>$ <span class="nb">pwd</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos="2 "></span></a>/public/home/zjb/app/vaspkit.1.12/utilities
+</code></pre>
+       </div>
+       <h2 id="catconcatenate-and-print-files">
+        cat：concatenate and print files
+        <a class="headerlink" href="#catconcatenate-and-print-files" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于查看文本文件的内容，后接要查看的文件名。通常可用管道与 more 和 less 一起使用，从而可以一页页地查看数据。
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>zjb@op utilities<span class="o">]</span>$ cat hello.sh 
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1">#!/bin/bash</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos="3 "></span></a><span class="nb">echo</span> <span class="s2">"I love you"</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos="4 "></span></a><span class="o">[</span>zjb@op utilities<span class="o">]</span>$ 
+</code></pre>
+       </div>
+       <h2 id="tar">
+        tar
+        <a class="headerlink" href="#tar" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如 gzip 和 bzip 等）进行压缩和解压。它的常用参数如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a>-c ：新建打包文件
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos="2 "></span></a>-t ：查看打包文件的内容含有哪些文件名
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><a href="#__codelineno-13-3"><span class="linenos" data-linenos="3 "></span></a>-x ：解打包或解压缩的功能，可以搭配-C（大写）指定解压的目录，注意-c,-t,-x不能同时出现在同一条命令中
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><a href="#__codelineno-13-4"><span class="linenos" data-linenos="4 "></span></a>-j ：通过bzip2的支持进行压缩/解压缩
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><a href="#__codelineno-13-5"><span class="linenos" data-linenos="5 "></span></a>-z ：通过gzip的支持进行压缩/解压缩
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><a href="#__codelineno-13-6"><span class="linenos" data-linenos="6 "></span></a>-v ：在压缩/解压缩过程中，将正在处理的文件名显示出来
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><a href="#__codelineno-13-7"><span class="linenos" data-linenos="7 "></span></a>-f filename ：filename为要处理的文件
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><a href="#__codelineno-13-8"><span class="linenos" data-linenos="8 "></span></a>-C dir ：指定压缩/解压缩的目录dir
+</code></pre>
+       </div>
+       <p>
+        通常只需要记住下面三条命令即可：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a>压缩：tar -zcvf filename.tar.gz 要被处理的文件或目录名称
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos="2 "></span></a>查询：tar -tvf filename.tar
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><a href="#__codelineno-14-3"><span class="linenos" data-linenos="3 "></span></a>解压：tar -zxvf filename.tar.gz
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><a href="#__codelineno-14-4"><span class="linenos" data-linenos="4 "></span></a>      tar -jxvf xx.tar.bz2
+</code></pre>
+       </div>
+       <p>
+        注：文件名并不定要以后缀
+        <code>
+         tar.gz
+        </code>
+        结尾，这里主要是为了说明使用的压缩程序为
+        <code>
+         gzip
+        </code>
+        。后缀也可是
+        <code>
+         .tar
+        </code>
+        ，
+        <code>
+         .tar.bz2
+        </code>
+        。
+       </p>
+       <h2 id="grep">
+        grep
+        <a class="headerlink" href="#grep" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令常用于分析一行的信息，若当中有我们所需要的信息，就将该行显示出来，该命令通常与管道命令一起使用，用于对一些命令的输出进行筛选加工等等，它的简单语法为
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a>grep <span class="o">[</span>-acinv<span class="o">]</span> <span class="o">[</span>--color<span class="o">=</span>auto<span class="o">]</span> <span class="s1">'查找字符串'</span> filename
+</code></pre>
+       </div>
+       <p>
+        它的常用参数如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos="1 "></span></a>-a ：将binary文件以text文件的方式查找数据
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos="2 "></span></a>-c ：计算找到‘查找字符串’的次数
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><a href="#__codelineno-16-3"><span class="linenos" data-linenos="3 "></span></a>-i ：忽略大小写的区别，即把大小写视为相同
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><a href="#__codelineno-16-4"><span class="linenos" data-linenos="4 "></span></a>-v ：反向选择，即显示出没有‘查找字符串’内容的那一行
+</code></pre>
+       </div>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><a href="#__codelineno-17-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 例如：</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><a href="#__codelineno-17-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 取出文件/etc/man.config中包含MANPATH的行，并把找到的关键字加上颜色</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><a href="#__codelineno-17-3"><span class="linenos" data-linenos="3 "></span></a>grep --color<span class="o">=</span>auto <span class="s1">'MANPATH'</span> /etc/man.config
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><a href="#__codelineno-17-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># 把ls -l的输出中包含字母file（不区分大小写）的内容输出</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><a href="#__codelineno-17-5"><span class="linenos" data-linenos="5 "></span></a>ls -l <span class="p">|</span> grep -i file
+</code></pre>
+       </div>
+       <h2 id="chown">
+        chown
+        <a class="headerlink" href="#chown" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于改变文件的所有者，与 chgrp 命令的使用方法相同，只是修改的文件属性不同，不再详述。
+       </p>
+       <h2 id="chmod">
+        chmod
+        <a class="headerlink" href="#chmod" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于改变文件的权限，一般的用法如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos="1 "></span></a>chmod <span class="o">[</span>-R<span class="o">]</span> xyz 文件或目录
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><a href="#__codelineno-18-2"><span class="linenos" data-linenos="2 "></span></a>-R：进行递归的持续更改，即连同子目录下的所有文件都会更改
+</code></pre>
+       </div>
+       <p>
+        同时，chmod 还可以使用 u（user）、g（group）、o（other）、a（all）和+（加入）、-（删除）、=（设置）跟 rwx 搭配来对文件的权限进行更改。
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 例如：</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos="2 "></span></a>chmod <span class="m">0755</span> file <span class="c1"># 把file的文件权限改变为-rxwr-xr-x</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><a href="#__codelineno-19-3"><span class="linenos" data-linenos="3 "></span></a>chmod g+w file <span class="c1"># 向file的文件权限中加入用户组可写权限</span>
+</code></pre>
+       </div>
+       <h2 id="find">
+        find
+        <a class="headerlink" href="#find" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        find 是一个基于查找的功能非常强大的命令，相对而言，它的使用也相对较为复杂，参数也比较多，所以在这里将给把它们分类列出，它的基本语法如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><a href="#__codelineno-20-1"><span class="linenos" data-linenos=" 1 "></span></a>find <span class="o">[</span>PATH<span class="o">]</span> <span class="o">[</span>option<span class="o">]</span> <span class="o">[</span>action<span class="o">]</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><a href="#__codelineno-20-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><a href="#__codelineno-20-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="c1"># 与时间有关的参数：</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><a href="#__codelineno-20-4"><span class="linenos" data-linenos=" 4 "></span></a>-mtime n : n为数字，意思为在n天之前的“一天内”被更改过的文件；
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><a href="#__codelineno-20-5"><span class="linenos" data-linenos=" 5 "></span></a>-mtime +n : 列出在n天之前（不含n天本身）被更改过的文件名；
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a><a href="#__codelineno-20-6"><span class="linenos" data-linenos=" 6 "></span></a>-mtime -n : 列出在n天之内（含n天本身）被更改过的文件名；
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><a href="#__codelineno-20-7"><span class="linenos" data-linenos=" 7 "></span></a>-newer file : 列出比file还要新的文件名
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a><a href="#__codelineno-20-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="c1"># 例如：</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a><a href="#__codelineno-20-9"><span class="linenos" data-linenos=" 9 "></span></a>find /root -mtime <span class="m">0</span> <span class="c1"># 在当前目录下查找今天之内有改动的文件</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a><a href="#__codelineno-20-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a><a href="#__codelineno-20-11"><span class="linenos" data-linenos="11 "></span></a><span class="c1"># 与用户或用户组名有关的参数：</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a><a href="#__codelineno-20-12"><span class="linenos" data-linenos="12 "></span></a>-user name : 列出文件所有者为name的文件
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a><a href="#__codelineno-20-13"><span class="linenos" data-linenos="13 "></span></a>-group name : 列出文件所属用户组为name的文件
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a><a href="#__codelineno-20-14"><span class="linenos" data-linenos="14 "></span></a>-uid n : 列出文件所有者为用户ID为n的文件
+<a id="__codelineno-20-15" name="__codelineno-20-15"></a><a href="#__codelineno-20-15"><span class="linenos" data-linenos="15 "></span></a>-gid n : 列出文件所属用户组为用户组ID为n的文件
+<a id="__codelineno-20-16" name="__codelineno-20-16"></a><a href="#__codelineno-20-16"><span class="linenos" data-linenos="16 "></span></a><span class="c1"># 例如：</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17"></a><a href="#__codelineno-20-17"><span class="linenos" data-linenos="17 "></span></a>find /home/ljianhui -user ljianhui <span class="c1"># 在目录/home/ljianhui中找出所有者为ljianhui的文件</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18"></a><a href="#__codelineno-20-18"><span class="linenos" data-linenos="18 "></span></a>
+<a id="__codelineno-20-19" name="__codelineno-20-19"></a><a href="#__codelineno-20-19"><span class="linenos" data-linenos="19 "></span></a><span class="c1"># 与文件权限及名称有关的参数：</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20"></a><a href="#__codelineno-20-20"><span class="linenos" data-linenos="20 "></span></a>-name filename ：找出文件名为filename的文件
+<a id="__codelineno-20-21" name="__codelineno-20-21"></a><a href="#__codelineno-20-21"><span class="linenos" data-linenos="21 "></span></a>-size <span class="o">[</span>+-<span class="o">]</span>SIZE ：找出比SIZE还要大（+）或小（-）的文件
+<a id="__codelineno-20-22" name="__codelineno-20-22"></a><a href="#__codelineno-20-22"><span class="linenos" data-linenos="22 "></span></a>-tpye TYPE ：查找文件的类型为TYPE的文件，TYPE的值主要有：一般文件（f<span class="o">)</span>、设备文件（b、c）、
+<a id="__codelineno-20-23" name="__codelineno-20-23"></a><a href="#__codelineno-20-23"><span class="linenos" data-linenos="23 "></span></a>             目录（d）、连接文件（l）、socket（s）、FIFO管道文件（p）；
+<a id="__codelineno-20-24" name="__codelineno-20-24"></a><a href="#__codelineno-20-24"><span class="linenos" data-linenos="24 "></span></a>-perm mode ：查找文件权限刚好等于mode的文件，mode用数字表示，如0755；
+<a id="__codelineno-20-25" name="__codelineno-20-25"></a><a href="#__codelineno-20-25"><span class="linenos" data-linenos="25 "></span></a>-perm -mode ：查找文件权限必须要全部包括mode权限的文件，mode用数字表示
+<a id="__codelineno-20-26" name="__codelineno-20-26"></a><a href="#__codelineno-20-26"><span class="linenos" data-linenos="26 "></span></a>-perm +mode ：查找文件权限包含任一mode的权限的文件，mode用数字表示
+<a id="__codelineno-20-27" name="__codelineno-20-27"></a><a href="#__codelineno-20-27"><span class="linenos" data-linenos="27 "></span></a><span class="c1"># 例如：</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28"></a><a href="#__codelineno-20-28"><span class="linenos" data-linenos="28 "></span></a>find / -name passwd <span class="c1"># 查找文件名为passwd的文件</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29"></a><a href="#__codelineno-20-29"><span class="linenos" data-linenos="29 "></span></a>find . -perm <span class="m">0755</span> <span class="c1"># 查找当前目录中文件权限的0755的文件</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30"></a><a href="#__codelineno-20-30"><span class="linenos" data-linenos="30 "></span></a>find . -size +12k <span class="c1"># 查找当前目录中大于12KB的文件，注意c表示byte</span>
+</code></pre>
+       </div>
+       <h2 id="ps">
+        ps
+        <a class="headerlink" href="#ps" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于将某个时间点的进程运行情况选取下来并输出，process 之意，它的常用参数如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><a href="#__codelineno-21-1"><span class="linenos" data-linenos="1 "></span></a>-A ：所有的进程均显示出来
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><a href="#__codelineno-21-2"><span class="linenos" data-linenos="2 "></span></a>-a ：不与terminal有关的所有进程
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><a href="#__codelineno-21-3"><span class="linenos" data-linenos="3 "></span></a>-u ：有效用户的相关进程
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><a href="#__codelineno-21-4"><span class="linenos" data-linenos="4 "></span></a>-x ：一般与a参数一起使用，可列出较完整的信息
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a><a href="#__codelineno-21-5"><span class="linenos" data-linenos="5 "></span></a>-l ：较长，较详细地将PID的信息列出
+</code></pre>
+       </div>
+       <p>
+        其实我们只要记住 ps 一般使用的命令参数搭配即可，它们并不多，如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><a href="#__codelineno-22-1"><span class="linenos" data-linenos="1 "></span></a>ps aux <span class="c1"># 查看系统所有的进程数据</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><a href="#__codelineno-22-2"><span class="linenos" data-linenos="2 "></span></a>ps ax <span class="c1"># 查看不与terminal有关的所有进程</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><a href="#__codelineno-22-3"><span class="linenos" data-linenos="3 "></span></a>ps -lA <span class="c1"># 查看系统所有的进程数据</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><a href="#__codelineno-22-4"><span class="linenos" data-linenos="4 "></span></a>ps axjf <span class="c1"># 查看连同一部分进程树状态</span>
+</code></pre>
+       </div>
+       <h2 id="kill">
+        kill
+        <a class="headerlink" href="#kill" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于向某个工作（%jobnumber）或者是某个 PID（数字）传送一个信号，它通常与 ps 和 jobs 命令一起使用，它的基本语法如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><a href="#__codelineno-23-1"><span class="linenos" data-linenos="1 "></span></a><span class="nb">kill</span> -signal PID
+</code></pre>
+       </div>
+       <p>
+        signal 的常用参数如下：
+       </p>
+       <p>
+        注：最前面的数字为信号的代号，使用时可以用代号代替相应的信号。
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><a href="#__codelineno-24-1"><span class="linenos" data-linenos="1 "></span></a><span class="m">1</span>：SIGHUP，启动被终止的进程
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><a href="#__codelineno-24-2"><span class="linenos" data-linenos="2 "></span></a><span class="m">2</span>：SIGINT，相当于输入ctrl+c，中断一个程序的进行
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><a href="#__codelineno-24-3"><span class="linenos" data-linenos="3 "></span></a><span class="m">9</span>：SIGKILL，强制中断一个进程的进行
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><a href="#__codelineno-24-4"><span class="linenos" data-linenos="4 "></span></a><span class="m">15</span>：SIGTERM，以正常的结束进程方式来终止进程
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a><a href="#__codelineno-24-5"><span class="linenos" data-linenos="5 "></span></a><span class="m">17</span>：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行
+</code></pre>
+       </div>
+       <p>
+        例如：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><a href="#__codelineno-25-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><a href="#__codelineno-25-2"><span class="linenos" data-linenos="2 "></span></a><span class="nb">kill</span> -SIGTERM %1 
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a><a href="#__codelineno-25-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1"># 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a><a href="#__codelineno-25-4"><span class="linenos" data-linenos="4 "></span></a><span class="nb">kill</span> -SIGHUP PID
+</code></pre>
+       </div>
+       <h2 id="killall">
+        killall
+        <a class="headerlink" href="#killall" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于向一个命令启动的进程发送一个信号，它的一般语法如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><a href="#__codelineno-26-1"><span class="linenos" data-linenos="1 "></span></a>killall <span class="o">[</span>-iIe<span class="o">]</span> <span class="o">[</span><span class="nb">command</span> name<span class="o">]</span>
+</code></pre>
+       </div>
+       <p>
+        它的参数如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><a href="#__codelineno-27-1"><span class="linenos" data-linenos="1 "></span></a>-i ：交互式的意思，若需要删除时，会询问用户
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a><a href="#__codelineno-27-2"><span class="linenos" data-linenos="2 "></span></a>-e ：表示后面接的command name要一致，但command name不能超过15个字符
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><a href="#__codelineno-27-3"><span class="linenos" data-linenos="3 "></span></a>-I ：命令名称忽略大小写
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a><a href="#__codelineno-27-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># 例如：</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a><a href="#__codelineno-27-5"><span class="linenos" data-linenos="5 "></span></a>killall -SIGHUP syslogd <span class="c1"># 重新启动syslogd</span>
+</code></pre>
+       </div>
+       <h2 id="file">
+        file
+        <a class="headerlink" href="#file" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于判断接在 file 命令后的文件的基本数据，因为在 Linux 下文件的类型并不是以后缀为分的，所以这个命令对我们来说就很有用了，它的用法非常简单，基本语法如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><a href="#__codelineno-28-1"><span class="linenos" data-linenos="1 "></span></a>file filename
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><a href="#__codelineno-28-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1">#例如：</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><a href="#__codelineno-28-3"><span class="linenos" data-linenos="3 "></span></a>file ./test
+</code></pre>
+       </div>
+       <h2 id="chgrp">
+        chgrp
+        <a class="headerlink" href="#chgrp" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于改变文件所属用户组，它的使用非常简单，它的基本用法如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><a href="#__codelineno-29-1"><span class="linenos" data-linenos="1 "></span></a>chgrp <span class="o">[</span>-R<span class="o">]</span> dirname/filename
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><a href="#__codelineno-29-2"><span class="linenos" data-linenos="2 "></span></a>-R ：进行递归的持续对所有文件和子目录更改
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><a href="#__codelineno-29-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1"># 例如：</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a><a href="#__codelineno-29-4"><span class="linenos" data-linenos="4 "></span></a>chgrp users -R ./dir <span class="c1"># 递归地把dir目录下中的所有文件和子目录下所有文件的用户组修改为users</span>
+</code></pre>
+       </div>
+       <h2 id="gcc">
+        gcc
+        <a class="headerlink" href="#gcc" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        对于一个用 Linux 开发 C 程序的人来说，这个命令就非常重要了，它用于把 C 语言的源程序文件，编译成可执行程序，由于 g++的很多参数跟它非常相似，所以这里只介绍 gcc 的参数，它的常用参数如下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><a href="#__codelineno-30-1"><span class="linenos" data-linenos=" 1 "></span></a>-o ：output之意，用于指定生成一个可执行文件的文件名
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a><a href="#__codelineno-30-2"><span class="linenos" data-linenos=" 2 "></span></a>-c ：用于把源文件生成目标文件（.o<span class="o">)</span>，并阻止编译器创建一个完整的程序
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a><a href="#__codelineno-30-3"><span class="linenos" data-linenos=" 3 "></span></a>-I ：增加编译时搜索头文件的路径
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a><a href="#__codelineno-30-4"><span class="linenos" data-linenos=" 4 "></span></a>-L ：增加编译时搜索静态连接库的路径
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a><a href="#__codelineno-30-5"><span class="linenos" data-linenos=" 5 "></span></a>-S ：把源文件生成汇编代码文件
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a><a href="#__codelineno-30-6"><span class="linenos" data-linenos=" 6 "></span></a>-lm：表示标准库的目录中名为libm.a的函数库
+<a id="__codelineno-30-7" name="__codelineno-30-7"></a><a href="#__codelineno-30-7"><span class="linenos" data-linenos=" 7 "></span></a>-lpthread ：连接NPTL实现的线程库
+<a id="__codelineno-30-8" name="__codelineno-30-8"></a><a href="#__codelineno-30-8"><span class="linenos" data-linenos=" 8 "></span></a>-std<span class="o">=</span> ：用于指定把使用的C语言的版本
+<a id="__codelineno-30-9" name="__codelineno-30-9"></a><a href="#__codelineno-30-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-30-10" name="__codelineno-30-10"></a><a href="#__codelineno-30-10"><span class="linenos" data-linenos="10 "></span></a><span class="c1"># 例如：</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11"></a><a href="#__codelineno-30-11"><span class="linenos" data-linenos="11 "></span></a><span class="c1"># 把源文件test.c按照c99标准编译成可执行程序test</span>
+<a id="__codelineno-30-12" name="__codelineno-30-12"></a><a href="#__codelineno-30-12"><span class="linenos" data-linenos="12 "></span></a>gcc -o <span class="nb">test</span> test.c -lm -std<span class="o">=</span>c99
+<a id="__codelineno-30-13" name="__codelineno-30-13"></a><a href="#__codelineno-30-13"><span class="linenos" data-linenos="13 "></span></a><span class="c1">#把源文件test.c转换为相应的汇编程序源文件test.s</span>
+<a id="__codelineno-30-14" name="__codelineno-30-14"></a><a href="#__codelineno-30-14"><span class="linenos" data-linenos="14 "></span></a>gcc -S test.c
+</code></pre>
+       </div>
+       <h2 id="time">
+        time
+        <a class="headerlink" href="#time" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        该命令用于测算一个命令（即程序）的执行时间。它的使用非常简单，就像平时输入命令一样，不过在命令的前面加入一个 time 即可，例如：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><a href="#__codelineno-31-1"><span class="linenos" data-linenos="1 "></span></a><span class="nb">time</span> ./process
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><a href="#__codelineno-31-2"><span class="linenos" data-linenos="2 "></span></a><span class="nb">time</span> ps aux
+</code></pre>
+       </div>
+       <p>
+        在程序或命令运行结束后，在最后输出了三个时间，它们分别是：
+       </p>
+       <p>
+        user：用户 CPU 时间，命令执行完成花费的用户 CPU 时间，即命令在用户态中执行时间总和；
+       </p>
+       <p>
+        system：系统 CPU 时间，命令执行完成花费的系统 CPU 时间，即命令在核心态中执行时间总和；
+       </p>
+       <p>
+        real：实际时间，从 command 命令行开始执行到运行终止的消逝时间；
+       </p>
+       <p>
+        注：用户 CPU 时间和系统 CPU 时间之和为 CPU 时间，即命令占用 CPU 执行的时间总和。实际时间要大于 CPU 时间，因为 Linux 是多任务操作系统，往往在执行一条命令时，系统还要处理其它任务。另一个需要注意的问题是即使每次执行相同命令，但所花费的时间也是不一样，其花费时间是与系统运行相关的。
+       </p>
+      </article>
+     </div>
+    </div>
+    <a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z">
+      </path>
+     </svg>
+     回到页面顶部
+    </a>
+   </main>
+   <footer class="md-footer">
+    <nav aria-label="页脚" class="md-footer__inner md-grid">
+     <a aria-label="上一页: 关于 linux" class="md-footer__link md-footer__link--prev" href="../00.linux/" rel="prev">
+      <div class="md-footer__button md-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z">
+        </path>
+       </svg>
+      </div>
+      <div class="md-footer__title">
+       <div class="md-ellipsis">
+        <span class="md-footer__direction">
+         上一页
+        </span>
+        关于 linux
+       </div>
+      </div>
+     </a>
+     <a aria-label="下一页: vi 编辑器" class="md-footer__link md-footer__link--next" href="../16.linux-vi/" rel="next">
+      <div class="md-footer__title">
+       <div class="md-ellipsis">
+        <span class="md-footer__direction">
+         下一页
+        </span>
+        vi 编辑器
+       </div>
+      </div>
+      <div class="md-footer__button md-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z">
+        </path>
+       </svg>
+      </div>
+     </a>
+    </nav>
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+       <div class="md-copyright__highlight">
+        Copyright © 2016 - 2022 Northword
+       </div>
+       Made with
+       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material for MkDocs
+       </a>
+      </div>
+      <div class="md-social">
+       <a class="md-social__link" href="mailto:northword@outlook.com" rel="noopener" target="_blank" title="">
+        <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+         <path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z">
+         </path>
+        </svg>
+       </a>
+       <a class="md-social__link" href="https://github.com/northword" rel="noopener" target="_blank" title="github.com">
+        <svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg">
+         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+         <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+         </path>
+        </svg>
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}
+  </script>
+  <script src="../../../../assets/javascripts/bundle.f758a944.min.js">
+  </script>
+  <script src="../../../../assets/js/utils.js">
+  </script>
+ </body>
+</html>

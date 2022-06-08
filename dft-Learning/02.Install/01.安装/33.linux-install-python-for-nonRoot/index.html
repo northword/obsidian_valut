@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="北辞的博客" name="description"/>
+  <link href="https://blog.northword.cn/dft-Learning/02.Install/01.%E5%AE%89%E8%A3%85/33.linux-install-python-for-nonRoot/" rel="canonical"/>
+  <link href="../../../../assets/logo/favicons.png" rel="icon"/>
+  <meta content="mkdocs-1.3.0, mkdocs-material-8.3.3" name="generator"/>
+  <title>
+   linux 编译 py3 - 北辞
+  </title>
+  <link href="../../../../assets/stylesheets/main.4a0965b7.min.css" rel="stylesheet"/>
+  <link href="../../../../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Karla:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   :root{--md-text-font:"Karla";--md-code-font:"Ubuntu Mono"}
+  </style>
+  <link href="../../../../assets/css/utils.css" rel="stylesheet"/>
+  <script>
+   __md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+  </script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+  <!-- <script>
+                $(document).ready(function() {
+                    $('.link-tooltip').tooltipster();
+                });
+        </script> -->
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" referrerpolicy="no-referrer" rel="stylesheet">
+   <meta content="linux 编译 py3" property="og:title"/>
+   <meta content="linux 编译 py3" name="twitter:title"/>
+   <meta content="北辞的博客" name="og:description"/>
+   <meta content="北辞的博客" name="twitter:description"/>
+   <meta content="summary" name="twitter:card"/>
+   <meta content="https://blog.northword.cn//assets/logo/LOGO_SEO.png" property="og:image"/>
+   <meta content="https://blog.northword.cn//assets/logo/LOGO_SEO.png" name="twitter:image"/>
+  </link>
+ </head>
+ <body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+  <script>
+   var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])
+  </script>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#为学校的-linux-安装-python3">
+    跳转至
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header md-header--lifted" data-md-component="header">
+   <nav aria-label="页眉" class="md-header__inner md-grid">
+    <a aria-label="北辞" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="北辞">
+     <img alt="logo" src="../../../../assets/logo/favicons.png"/>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        北辞
+       </span>
+      </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        linux 编译 py3
+       </span>
+      </div>
+     </div>
+    </div>
+    <form class="md-header__option" data-md-component="palette">
+     <input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+     <label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z">
+       </path>
+      </svg>
+     </label>
+     <input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+     <label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z">
+       </path>
+      </svg>
+     </label>
+    </form>
+    <label class="md-header__button md-icon" for="__search">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+     <label class="md-search__overlay" for="__search">
+     </label>
+     <div class="md-search__inner" role="search">
+      <form class="md-search__form" name="search">
+       <input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+       <label class="md-search__icon md-icon" for="__search">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z">
+         </path>
+        </svg>
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z">
+         </path>
+        </svg>
+       </label>
+       <nav aria-label="查找" class="md-search__options">
+        <button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" type="reset">
+         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z">
+          </path>
+         </svg>
+        </button>
+       </nav>
+      </form>
+      <div class="md-search__output">
+       <div class="md-search__scrollwrap" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+         <div class="md-search-result__meta">
+          正在初始化搜索引擎
+         </div>
+         <ol class="md-search-result__list">
+         </ol>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav>
+   <nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../../..">
+        Title
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link md-tabs__link--active" href="../../../">
+        计算模拟学习笔记
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../../../notes/test/">
+        Test
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="北辞" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="北辞">
+           <img alt="logo" src="../../../../assets/logo/favicons.png"/>
+          </a>
+          北辞
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../..">
+            Title
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+           <div class="md-nav__link md-nav__link--index">
+            <a href="../../../">
+             计算模拟学习笔记
+            </a>
+            <label for="__nav_2">
+             <span class="md-nav__icon md-icon">
+             </span>
+            </label>
+           </div>
+           <nav aria-label="计算模拟学习笔记" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_2">
+             <span class="md-nav__icon md-icon">
+             </span>
+             计算模拟学习笔记
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="../../../01.Theory/00.README/">
+               理论知识
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+              <input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_3">
+               01.安装
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="01.安装" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_3">
+                <span class="md-nav__icon md-icon">
+                </span>
+                01.安装
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../00.requirements/">
+                  软件列表
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../01.windows-apps/">
+                  Windows 平台的部分软件
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../02.install-python/">
+                  安装 python
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../03.install-ase/">
+                  安装 ASE
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../21.linux-install-vaspkit/">
+                  安装 VASPKIT
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../22.linux-install-vtstScript/">
+                  VTST-Script
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../23.linux-install-lrzsz/">
+                  linux 安装 lrzsz
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../31.linux-install-app-for-nonRoot/">
+                  linux 非 ROOT 用户如何安装软件
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../32.linux-install-gnuplot/">
+                  linux 编译 gnuplot
+                 </a>
+                </li>
+                <li class="md-nav__item md-nav__item--active">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+                 <label class="md-nav__link md-nav__link--active" for="__toc">
+                  linux 编译 py3
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <a class="md-nav__link md-nav__link--active" href="./">
+                  linux 编译 py3
+                 </a>
+                 <nav aria-label="目录" class="md-nav md-nav--secondary">
+                  <label class="md-nav__title" for="__toc">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   目录
+                  </label>
+                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#步骤放在最前面">
+                     步骤放在最前面
+                    </a>
+                    <nav aria-label="步骤放在最前面" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#升级-openssl">
+                        升级 OPENSSL
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#编译-python3">
+                        编译 Python3
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#经历">
+                     经历
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../34.linux-install-vtst-vasp/">
+                  编译 VASP with VTST
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_4">
+               Linux 使用
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="Linux 使用" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_4">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Linux 使用
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_4_1">
+                  01.linux
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="01.linux" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_4_1">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   01.linux
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../03.Linux/01.linux/00.linux/">
+                     关于 linux
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../03.Linux/01.linux/15.linux-command/">
+                     Linux 常用命令
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../03.Linux/01.linux/16.linux-vi/">
+                     vi 编辑器
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../03.Linux/01.linux/17.linux-lrzsz-usage/">
+                     lrzsz 使用方法
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../03.Linux/01.linux/19.linux-bashrc-VS-bash_profile/">
+                     .bashrc 与  .bash_profile
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" id="__nav_2_4_2" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_4_2">
+                  02.pbs
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="02.pbs" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_4_2">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   02.pbs
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../03.Linux/02.pbs/01.PBS-README/">
+                     PBS
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../03.Linux/02.pbs/02.PBS-commend/">
+                     管理作业
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../03.Linux/02.pbs/03.PBS-script/">
+                     PBS 脚本
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_5">
+               Materials Studio 使用
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="Materials Studio 使用" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_5">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Materials Studio 使用
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../04.Materials-Studio/00.README/">
+                  Mat.Studio 操作
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../04.Materials-Studio/02.note/">
+                  建模中的一些小疑惑
+                 </a>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_3" id="__nav_2_5_3" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_5_3">
+                  05.example
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="05.example" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_5_3">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   05.example
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../04.Materials-Studio/05.example/11.task-model-of-CO-absorption-on-Au%20copy/">
+                     作业：CO吸附在Au上建模
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../04.Materials-Studio/05.example/12.task-model-of-Rectangular-graphene/">
+                     作业：矩形石墨烯建模
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_6">
+               VASP
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="VASP" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_6">
+                <span class="md-nav__icon md-icon">
+                </span>
+                VASP
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_6_1">
+                  01.VASP输入输出文件
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="01.VASP输入输出文件" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_6_1">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   01.VASP输入输出文件
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/00.README/">
+                     VASP 简介
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/01.vasp-input-files/">
+                     VASP 的输入文件
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/02.vasp-input-files-INCAR/">
+                     常用的 INCAR 标签
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/03.vasp-input-files-gen/">
+                     准备 VASP 的输入文件
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/01.VASP%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6/05.vasp-output-files/">
+                     VASP 的输出文件
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_6_2">
+                  02.优化
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="02.优化" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_6_2">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   02.优化
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/02.vasp-opt/">
+                     结构优化、自洽、非自洽
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/03.vasp-bulk/">
+                     晶格常数计算
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/04.vasp-DFT-plus-U/">
+                     DFT+U
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/05.vasp-surface-energy/">
+                     表面能的计算
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/02.%E4%BC%98%E5%8C%96/06.vasp-adsorption-energy/">
+                     吸附能的计算
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_3" id="__nav_2_6_3" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_6_3">
+                  03.电子结构
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="03.电子结构" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_6_3">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   03.电子结构
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/03.%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/02.vasp-chg-diff/">
+                     电荷密度差分
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/03.%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/03.vasp-chg-split/">
+                     自旋电荷密度
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/03.%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/04.vasp-DOS/">
+                     态密度分析
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/03.%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/05.vasp-chg-bader/">
+                     Bader 电荷分析
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item md-nav__item--nested">
+                 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_4" id="__nav_2_6_4" type="checkbox"/>
+                 <label class="md-nav__link" for="__nav_2_6_4">
+                  04.反应路径
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <nav aria-label="04.反应路径" class="md-nav" data-md-level="3">
+                  <label class="md-nav__title" for="__nav_2_6_4">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   04.反应路径
+                  </label>
+                  <ul class="md-nav__list" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/04.%E5%8F%8D%E5%BA%94%E8%B7%AF%E5%BE%84/01.vasp-neb/">
+                     NEB 查找过渡态
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/04.%E5%8F%8D%E5%BA%94%E8%B7%AF%E5%BE%84/02.vasp-dimer/">
+                     Dimer 方法
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="../../../05.VASP/04.%E5%8F%8D%E5%BA%94%E8%B7%AF%E5%BE%84/03.vasp-frequency-analysis/">
+                     频率分析
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../05.VASP/05.%E5%88%86%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6/01.vasp-md/">
+                  分子动力学
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../05.VASP/08.%E5%85%B6%E4%BB%96/01.K-PATH/">
+                  K-PATH
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_7">
+               其他应用
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="其他应用" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_7">
+                <span class="md-nav__icon md-icon">
+                </span>
+                其他应用
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../06.Other%20App/00.README/">
+                  README
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../06.Other%20App/01.ASE-usage/">
+                  ASE-usage
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_8">
+               错误排查
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-label="错误排查" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_8">
+                <span class="md-nav__icon md-icon">
+                </span>
+                错误排查
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../09.Others/01.MS-NoResponse-win2004/">
+                  MS 在 win2004 及以上一按鼠标就卡住
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../09.Others/03.numpy-in-win20H2/">
+                  numpy 在 win2004 及以上报错
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../../../09.Others/99.on-the-end/">
+                  on-the-end
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../../../notes/test/">
+            Test
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="目录" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          目录
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#步骤放在最前面">
+            步骤放在最前面
+           </a>
+           <nav aria-label="步骤放在最前面" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#升级-openssl">
+               升级 OPENSSL
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#编译-python3">
+               编译 Python3
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#经历">
+            经历
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content" data-md-component="content">
+      <article class="md-content__inner md-typeset">
+       <h1 id="为学校的-linux-安装-python3">
+        为学校的 linux 安装 python3
+        <a class="headerlink" href="#为学校的-linux-安装-python3" title="Permanent link">
+         ¶
+        </a>
+       </h1>
+       <p>
+        由于
+        <code>
+         ASE
+        </code>
+        依赖
+        <code>
+         Python3.5
+        </code>
+        或更高版本，而学习的机器上只有
+        <code>
+         python2
+        </code>
+        ，所以要装一下 py3。
+       </p>
+       <h2 id="步骤放在最前面">
+        步骤放在最前面
+        <a class="headerlink" href="#步骤放在最前面" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <h3 id="升级-openssl">
+        升级 OPENSSL
+        <a class="headerlink" href="#升级-openssl" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>$ <span class="nb">cd</span> /tmp
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>$ wget -c https://www.openssl.org/source/openssl-1.1.1d.tar.gz
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>$ tar -xvf openssl-1.1.1d.tar.gz
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>$ <span class="nb">cd</span> openssl-1.1.1d
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>$ ./config --prefix<span class="o">=</span>/public/home/zjb/openssl-1.1.1d no-zlib  <span class="c1">#注意添加no-zlib</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>$ make <span class="o">&amp;&amp;</span> make install
+</code></pre>
+       </div>
+       <p>
+        之后添加环境变量
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>$ vi ~/.bashrc
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 加入以下内容</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">"/public/home/zjb/app/openssl-1.1.1d/bin"</span>:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">"/public/home/zjb/app/openssl-1.1.1d/lib"</span>:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">"/public/home/zjb/app/openssl-1.1.1d/lib"</span>:<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos="7 "></span></a>$ <span class="nb">source</span> ~/.bashrc
+</code></pre>
+       </div>
+       <p>
+        此时运行
+        <code>
+         openssl
+        </code>
+        –
+        <code>
+         version
+        </code>
+        应当显示 1.1.1 版本，如果是，进行下一步。
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ openssl
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>OpenSSL&gt; version
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>OpenSSL <span class="m">1</span>.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a>OpenSSL&gt; <span class="nb">exit</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ 
+</code></pre>
+       </div>
+       <h3 id="编译-python3">
+        编译 Python3
+        <a class="headerlink" href="#编译-python3" title="Permanent link">
+         ¶
+        </a>
+       </h3>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>$ <span class="nb">cd</span> /tmp
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a>$ wget -c https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>$ tar -xvf Python-3.8.1.tgz
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a>$ <span class="nb">cd</span> Python-3.8.1
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a>$ ./configure --prefix<span class="o">=</span>/public/home/zjb/app/python38/
+</code></pre>
+       </div>
+       <p>
+        到这儿截住，去
+        <code>
+         Python-3.8.1/Moudles
+        </code>
+        下编辑
+        <code>
+         Setup
+        </code>
+        以修改 OPENSSL 的路径：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>$ vi Moudles/Setup
+</code></pre>
+       </div>
+       <p>
+        查找
+        <code>
+         SSL
+        </code>
+        ，把如下几行取消注释
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="nv">SSL</span><span class="o">=</span>/public/home/zjb/app/openssl-1.1.1d     <span class="c1">#改为刚安装的ssl路径</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a>_ssl _ssl.c <span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>       -DUSE_SSL -I<span class="k">$(</span>SSL<span class="k">)</span>/include -I<span class="k">$(</span>SSL<span class="k">)</span>/include/openssl <span class="se">\</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a>       -L<span class="k">$(</span>SSL<span class="k">)</span>/lib -lssl -lcrypto
+</code></pre>
+       </div>
+       <p>
+        其中第一行替换为自己的 OPENSSL 安装路径，修改后编译：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a>$ make <span class="o">&amp;&amp;</span> make install
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1"># 如果之前有编译过，用make clean清理已编译的文件后再编译</span>
+</code></pre>
+       </div>
+       <p>
+        编译完成后，试一下
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="p">[</span><span class="n">zjb</span><span class="nd">@op</span> <span class="n">Python</span><span class="o">-</span><span class="mf">3.8.5</span><span class="p">]</span><span class="err">$</span> <span class="n">python3</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">Python</span> <span class="mf">3.8.5</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Nov</span> <span class="mi">20</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">23</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">42</span><span class="p">)</span> 
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">[</span><span class="n">GCC</span> <span class="mf">4.4.7</span> <span class="mi">20120313</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">4.4.7</span><span class="o">-</span><span class="mi">17</span><span class="p">)]</span> <span class="n">on</span> <span class="n">linux</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos="4 "></span></a><span class="n">Type</span> <span class="s2">"help"</span><span class="p">,</span> <span class="s2">"copyright"</span><span class="p">,</span> <span class="s2">"credits"</span> <span class="ow">or</span> <span class="s2">"license"</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">ssl</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos="6 "></span></a><span class="o">&gt;&gt;&gt;</span> 
+</code></pre>
+       </div>
+       <p>
+        OK，完成！
+       </p>
+       <p>
+        此时 SSL 模块应当是可用的，尝试安装一个
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a>$ pip3 install ase
+</code></pre>
+       </div>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos=" 1 "></span></a>[zjb@op Python-3.8.5]$ pip3 install ase
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos=" 2 "></span></a>Collecting ase
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos=" 3 "></span></a>  Downloading ase-3.20.1-py3-none-any.whl (2.2 MB)
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><a href="#__codelineno-9-4"><span class="linenos" data-linenos=" 4 "></span></a>     |████████████████████████████████| 2.2 MB 1.4 MB/s 
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos=" 5 "></span></a>Collecting matplotlib&gt;=2.0.0
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><a href="#__codelineno-9-6"><span class="linenos" data-linenos=" 6 "></span></a>  Downloading matplotlib-3.3.3-cp38-cp38-manylinux1_x86_64.whl (11.6 MB)
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><a href="#__codelineno-9-7"><span class="linenos" data-linenos=" 7 "></span></a>     |████████████████████████████████| 11.6 MB 2.3 MB/s 
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><a href="#__codelineno-9-8"><span class="linenos" data-linenos=" 8 "></span></a>Collecting numpy&gt;=1.11.3
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><a href="#__codelineno-9-9"><span class="linenos" data-linenos=" 9 "></span></a>  Downloading numpy-1.19.4-cp38-cp38-manylinux2010_x86_64.whl (14.5 MB)
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><a href="#__codelineno-9-10"><span class="linenos" data-linenos="10 "></span></a>     |████████████████████████████████| 14.5 MB 153 kB/s 
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><a href="#__codelineno-9-11"><span class="linenos" data-linenos="11 "></span></a>Collecting scipy&gt;=0.18.1
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><a href="#__codelineno-9-12"><span class="linenos" data-linenos="12 "></span></a>  Downloading scipy-1.5.4-cp38-cp38-manylinux1_x86_64.whl (25.8 MB)
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><a href="#__codelineno-9-13"><span class="linenos" data-linenos="13 "></span></a>     |████████████████████████████████| 25.8 MB 1.5 MB/s 
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><a href="#__codelineno-9-14"><span class="linenos" data-linenos="14 "></span></a>Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.3
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><a href="#__codelineno-9-15"><span class="linenos" data-linenos="15 "></span></a>  Downloading pyparsing-2.4.7-py2.py3-none-any.whl (67 kB)
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><a href="#__codelineno-9-16"><span class="linenos" data-linenos="16 "></span></a>     |████████████████████████████████| 67 kB 1.3 MB/s 
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><a href="#__codelineno-9-17"><span class="linenos" data-linenos="17 "></span></a>Collecting pillow&gt;=6.2.0
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a><a href="#__codelineno-9-18"><span class="linenos" data-linenos="18 "></span></a>  Downloading Pillow-8.0.1-cp38-cp38-manylinux1_x86_64.whl (2.2 MB)
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><a href="#__codelineno-9-19"><span class="linenos" data-linenos="19 "></span></a>     |████████████████████████████████| 2.2 MB 1.9 MB/s 
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><a href="#__codelineno-9-20"><span class="linenos" data-linenos="20 "></span></a>Collecting cycler&gt;=0.10
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><a href="#__codelineno-9-21"><span class="linenos" data-linenos="21 "></span></a>  Downloading cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a><a href="#__codelineno-9-22"><span class="linenos" data-linenos="22 "></span></a>Collecting kiwisolver&gt;=1.0.1
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><a href="#__codelineno-9-23"><span class="linenos" data-linenos="23 "></span></a>  Downloading kiwisolver-1.3.1-cp38-cp38-manylinux1_x86_64.whl (1.2 MB)
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a><a href="#__codelineno-9-24"><span class="linenos" data-linenos="24 "></span></a>     |████████████████████████████████| 1.2 MB 1.9 MB/s 
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a><a href="#__codelineno-9-25"><span class="linenos" data-linenos="25 "></span></a>Collecting python-dateutil&gt;=2.1
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a><a href="#__codelineno-9-26"><span class="linenos" data-linenos="26 "></span></a>  Downloading python_dateutil-2.8.1-py2.py3-none-any.whl (227 kB)
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a><a href="#__codelineno-9-27"><span class="linenos" data-linenos="27 "></span></a>     |████████████████████████████████| 227 kB 2.0 MB/s 
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a><a href="#__codelineno-9-28"><span class="linenos" data-linenos="28 "></span></a>Collecting six
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a><a href="#__codelineno-9-29"><span class="linenos" data-linenos="29 "></span></a>  Downloading six-1.15.0-py2.py3-none-any.whl (10 kB)
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a><a href="#__codelineno-9-30"><span class="linenos" data-linenos="30 "></span></a>Installing collected packages: pyparsing, pillow, six, cycler, numpy, kiwisolver, python-dateutil, matplotlib, scipy, ase
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a><a href="#__codelineno-9-31"><span class="linenos" data-linenos="31 "></span></a>Successfully installed ase-3.20.1 cycler-0.10.0 kiwisolver-1.3.1 matplotlib-3.3.3 numpy-1.19.4 pillow-8.0.1 pyparsing-2.4.7 python-dateutil-2.8.1 scipy-1.5.4 six-1.15.0
+</code></pre>
+       </div>
+       <p>
+        正常！
+       </p>
+       <hr/>
+       <h2 id="经历">
+        经历
+        <a class="headerlink" href="#经历" title="Permanent link">
+         ¶
+        </a>
+       </h2>
+       <p>
+        最开始按照正常的编译过程去编译安装 Python3，但是过程中发现 SSL 模块无法被编译，刚开始没当回事，结果都好了发现 pip3 没法使用：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos="1 "></span></a>pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available.
+</code></pre>
+       </div>
+       <p>
+        因为 ssl 模块不可用，又折回去折腾，发现提示中，是因为机器本身安装的 openssl 版本过低（1.0.1）导致的，
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos="1 "></span></a>Python build finished successfully!
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos="2 "></span></a>The necessary bits to build these optional modules were not found:
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos="3 "></span></a>_sqlite3              _ssl                                     
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos="4 "></span></a>To find the necessary bits, look in setup.py in detect_modules() for the module's name.
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos="5 "></span></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><a href="#__codelineno-11-6"><span class="linenos" data-linenos="6 "></span></a>Could not build the ssl module!
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos="7 "></span></a>Python requires an OpenSSL 1.0.2 or 1.1 compatible libssl with X509_VERIFY_PARAM_set1_host().
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><a href="#__codelineno-11-8"><span class="linenos" data-linenos="8 "></span></a>LibreSSL 2.6.4 and earlier do not provide the necessary APIs, https://github.com/libressl-portable/portable/issues/381
+</code></pre>
+       </div>
+       <p>
+        考虑升级 openssl 解决一下：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a>$ wget -c https://www.openssl.org/source/openssl-1.1.1d.tar.gz
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a>$ tar -xvf openssl-1.1.1d.tar.gz
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos="3 "></span></a>$ <span class="nb">cd</span> openssl-1.1.1d
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos="4 "></span></a>$ ./config --prefix<span class="o">=</span>/public/home/zjb/app/penssl-1.1.1d no-zlib  <span class="c1">#注意添加no-zlib</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos="5 "></span></a>$ make <span class="o">&amp;&amp;</span> make install
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><a href="#__codelineno-12-6"><span class="linenos" data-linenos="6 "></span></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><a href="#__codelineno-12-7"><span class="linenos" data-linenos="7 "></span></a>$ vi ~/.bashrc
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><a href="#__codelineno-12-8"><span class="linenos" data-linenos="8 "></span></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">"/public/home/zjb/app/openssl-1.1.1d/bin"</span>:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+</code></pre>
+       </div>
+       <p>
+        运行
+        <code>
+         openssl
+        </code>
+        发现报错
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a>error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory
+</code></pre>
+       </div>
+       <p>
+        搜了一些资料，发现解决方法多是
+        <code>
+         sudo
+        </code>
+        的，mmp 我要是有 root 还费这劲去编译呢？？？还好在一篇资料里看到一个方案：发现
+        <code>
+         libssl.so.1.1
+        </code>
+        存在于
+        <code>
+         openssl.1.1.d/lib
+        </code>
+        目录下，于是考虑把这个目录加入环境变量：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/public/home/zjb/app/openssl-1.1/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre>
+       </div>
+       <p>
+        这下正常了：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><a href="#__codelineno-15-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ openssl
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><a href="#__codelineno-15-2"><span class="linenos" data-linenos="2 "></span></a>OpenSSL&gt; version
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><a href="#__codelineno-15-3"><span class="linenos" data-linenos="3 "></span></a>OpenSSL <span class="m">1</span>.1.1d  <span class="m">10</span> Sep <span class="m">2019</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><a href="#__codelineno-15-4"><span class="linenos" data-linenos="4 "></span></a>OpenSSL&gt; <span class="nb">exit</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a><a href="#__codelineno-15-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>zjb@op ~<span class="o">]</span>$ 
+</code></pre>
+       </div>
+       <p>
+        接下来就继续编译 Python3：
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><a href="#__codelineno-16-1"><span class="linenos" data-linenos="1 "></span></a>$ <span class="nb">cd</span> /tmp
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><a href="#__codelineno-16-2"><span class="linenos" data-linenos="2 "></span></a>$ wget -c https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><a href="#__codelineno-16-3"><span class="linenos" data-linenos="3 "></span></a>$ tar -xvf Python-3.8.1.tgz
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><a href="#__codelineno-16-4"><span class="linenos" data-linenos="4 "></span></a>$ <span class="nb">cd</span> Python-3.8.1
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><a href="#__codelineno-16-5"><span class="linenos" data-linenos="5 "></span></a>$ ./configure --prefix<span class="o">=</span>/public/home/zjb/app/python38/
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><a href="#__codelineno-16-6"><span class="linenos" data-linenos="6 "></span></a>$ make 
+</code></pre>
+       </div>
+       <p>
+        此时编译的仍然提示
+        <code>
+         Could not build the ssl module! Python requires an OpenSSL 1.0.2 or 1.1 compatible libssl with X509_VERIFY_PARAM_set1_host().
+        </code>
+        ，但是
+        <code>
+         make install
+        </code>
+        后是可以用的，也不知道为什么。
+       </p>
+       <p>
+        接下来添加环境变量，
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><a href="#__codelineno-17-1"><span class="linenos" data-linenos="1 "></span></a>export PATH=/public/home/zjb/app/python38/bin:${PATH}
+</code></pre>
+       </div>
+       <p>
+        然后…正常了
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><a href="#__codelineno-18-1"><span class="linenos" data-linenos="1 "></span></a><span class="p">[</span><span class="n">zjb</span><span class="nd">@op</span> <span class="n">Python</span><span class="o">-</span><span class="mf">3.8.5</span><span class="p">]</span><span class="err">$</span> <span class="n">python3</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><a href="#__codelineno-18-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">Python</span> <span class="mf">3.8.5</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Nov</span> <span class="mi">20</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">23</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">42</span><span class="p">)</span> 
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><a href="#__codelineno-18-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">[</span><span class="n">GCC</span> <span class="mf">4.4.7</span> <span class="mi">20120313</span> <span class="p">(</span><span class="n">Red</span> <span class="n">Hat</span> <span class="mf">4.4.7</span><span class="o">-</span><span class="mi">17</span><span class="p">)]</span> <span class="n">on</span> <span class="n">linux</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><a href="#__codelineno-18-4"><span class="linenos" data-linenos="4 "></span></a><span class="n">Type</span> <span class="s2">"help"</span><span class="p">,</span> <span class="s2">"copyright"</span><span class="p">,</span> <span class="s2">"credits"</span> <span class="ow">or</span> <span class="s2">"license"</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><a href="#__codelineno-18-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">ssl</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a><a href="#__codelineno-18-6"><span class="linenos" data-linenos="6 "></span></a><span class="o">&gt;&gt;&gt;</span> 
+</code></pre>
+       </div>
+       <hr/>
+       <p>
+        几分钟后发现
+        <code>
+         ase
+        </code>
+        虽然安装了，但是不能运行，
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos=" 1 "></span></a>[zjb@op python38]$ ase
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos=" 2 "></span></a>Traceback (most recent call last):
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><a href="#__codelineno-19-3"><span class="linenos" data-linenos=" 3 "></span></a>  File "/public/home/zjb/app/ase/bin/ase", line 2, in &lt;module&gt;
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a><a href="#__codelineno-19-4"><span class="linenos" data-linenos=" 4 "></span></a>    from ase.cli.main import main
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a><a href="#__codelineno-19-5"><span class="linenos" data-linenos=" 5 "></span></a>  File "/public/home/zjb/app/ase/ase/__init__.py", line 25, in &lt;module&gt;
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a><a href="#__codelineno-19-6"><span class="linenos" data-linenos=" 6 "></span></a>    from ase.atoms import Atoms
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a><a href="#__codelineno-19-7"><span class="linenos" data-linenos=" 7 "></span></a>  File "/public/home/zjb/app/ase/ase/atoms.py", line 19, in &lt;module&gt;
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a><a href="#__codelineno-19-8"><span class="linenos" data-linenos=" 8 "></span></a>    from ase.constraints import (FixConstraint, FixBondLengths, FixLinearTriatomic,
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a><a href="#__codelineno-19-9"><span class="linenos" data-linenos=" 9 "></span></a>  File "/public/home/zjb/app/ase/ase/constraints.py", line 10, in &lt;module&gt;
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a><a href="#__codelineno-19-10"><span class="linenos" data-linenos="10 "></span></a>    from scipy.linalg import expm, logm
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a><a href="#__codelineno-19-11"><span class="linenos" data-linenos="11 "></span></a>  File "/public/home/zjb/app/python38/lib/python3.8/site-packages/scipy/__init__.py", line 151, in &lt;module&gt;
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a><a href="#__codelineno-19-12"><span class="linenos" data-linenos="12 "></span></a>    from scipy._lib._ccallback import LowLevelCallable
+<a id="__codelineno-19-13" name="__codelineno-19-13"></a><a href="#__codelineno-19-13"><span class="linenos" data-linenos="13 "></span></a>  File "/public/home/zjb/app/python38/lib/python3.8/site-packages/scipy/_lib/_ccallback.py", line 1, in &lt;module&gt;
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a><a href="#__codelineno-19-14"><span class="linenos" data-linenos="14 "></span></a>    from . import _ccallback_c
+<a id="__codelineno-19-15" name="__codelineno-19-15"></a><a href="#__codelineno-19-15"><span class="linenos" data-linenos="15 "></span></a>  File "_ccallback_c.pyx", line 210, in init scipy._lib._ccallback_c
+<a id="__codelineno-19-16" name="__codelineno-19-16"></a><a href="#__codelineno-19-16"><span class="linenos" data-linenos="16 "></span></a>  File "/public/home/zjb/app/python38/lib/python3.8/ctypes/__init__.py", line 7, in &lt;module&gt;
+<a id="__codelineno-19-17" name="__codelineno-19-17"></a><a href="#__codelineno-19-17"><span class="linenos" data-linenos="17 "></span></a>    from _ctypes import Union, Structure, Array
+<a id="__codelineno-19-18" name="__codelineno-19-18"></a><a href="#__codelineno-19-18"><span class="linenos" data-linenos="18 "></span></a>ModuleNotFoundError: No module named '_ctypes'
+</code></pre>
+       </div>
+       <p>
+        因为 python 缺少依赖库
+        <code>
+         libffi-devel
+        </code>
+        ，查资料没发现这玩意怎么自己搞，似乎只能管理员去装，反正网上给出的方法都不行…
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><a href="#__codelineno-20-1"><span class="linenos" data-linenos="1 "></span></a><span class="o">[</span>zjb@op python38<span class="o">]</span>$ yum install -y libffi-devel
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><a href="#__codelineno-20-2"><span class="linenos" data-linenos="2 "></span></a>Loaded plugins: aliases, changelog, kabi, ovl, presto, refresh-packagekit, security, tmprepo, verify, versionlock
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><a href="#__codelineno-20-3"><span class="linenos" data-linenos="3 "></span></a>Loading support <span class="k">for</span> Red Hat kernel ABI
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><a href="#__codelineno-20-4"><span class="linenos" data-linenos="4 "></span></a>ovl: Error <span class="k">while</span> doing RPMdb copy-up:
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><a href="#__codelineno-20-5"><span class="linenos" data-linenos="5 "></span></a><span class="o">[</span>Errno <span class="m">13</span><span class="o">]</span> Permission denied: <span class="s1">'/var/lib/rpm/Sigmd5'</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a><a href="#__codelineno-20-6"><span class="linenos" data-linenos="6 "></span></a>You need to be root to perform this command.
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><a href="#__codelineno-20-7"><span class="linenos" data-linenos="7 "></span></a><span class="o">[</span>zjb@op python38<span class="o">]</span>$ 
+</code></pre>
+       </div>
+       <p>
+        此贴终结，失败告终，over！
+       </p>
+      </article>
+     </div>
+    </div>
+    <a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z">
+      </path>
+     </svg>
+     回到页面顶部
+    </a>
+   </main>
+   <footer class="md-footer">
+    <nav aria-label="页脚" class="md-footer__inner md-grid">
+     <a aria-label="上一页: linux 编译 gnuplot" class="md-footer__link md-footer__link--prev" href="../32.linux-install-gnuplot/" rel="prev">
+      <div class="md-footer__button md-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z">
+        </path>
+       </svg>
+      </div>
+      <div class="md-footer__title">
+       <div class="md-ellipsis">
+        <span class="md-footer__direction">
+         上一页
+        </span>
+        linux 编译 gnuplot
+       </div>
+      </div>
+     </a>
+     <a aria-label="下一页: 编译 VASP with VTST" class="md-footer__link md-footer__link--next" href="../34.linux-install-vtst-vasp/" rel="next">
+      <div class="md-footer__title">
+       <div class="md-ellipsis">
+        <span class="md-footer__direction">
+         下一页
+        </span>
+        编译 VASP with VTST
+       </div>
+      </div>
+      <div class="md-footer__button md-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z">
+        </path>
+       </svg>
+      </div>
+     </a>
+    </nav>
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+       <div class="md-copyright__highlight">
+        Copyright © 2016 - 2022 Northword
+       </div>
+       Made with
+       <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        Material for MkDocs
+       </a>
+      </div>
+      <div class="md-social">
+       <a class="md-social__link" href="mailto:northword@outlook.com" rel="noopener" target="_blank" title="">
+        <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+         <path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z">
+         </path>
+        </svg>
+       </a>
+       <a class="md-social__link" href="https://github.com/northword" rel="noopener" target="_blank" title="github.com">
+        <svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg">
+         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+         <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+         </path>
+        </svg>
+       </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.instant"], "search": "../../../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}
+  </script>
+  <script src="../../../../assets/javascripts/bundle.f758a944.min.js">
+  </script>
+  <script src="../../../../assets/js/utils.js">
+  </script>
+ </body>
+</html>

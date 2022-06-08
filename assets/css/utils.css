@@ -35,7 +35,7 @@
 }
 
 .tooltip_templates {
-    /* display: none; */
+    display: none;
 }
 
 [data-md-color-scheme="slate"] .tooltipster-sidetip .tooltipster-box {
