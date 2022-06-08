@@ -1,0 +1,11 @@
+title: 计算模拟学习笔记
+collapse_single_pages: true
+nav:
+    - index.md
+    - 理论: 01.Theory
+    - 安装: 02.Install
+    - Linux 使用: 03.Linux
+    - Materials Studio 使用: 04.Materials-Studio
+    - VASP: 05.VASP
+    - 其他应用: 06.Other App
+    - 错误排查: 09.Others
