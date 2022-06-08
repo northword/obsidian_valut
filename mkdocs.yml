@@ -91,10 +91,10 @@ plugins:
       collapse_single_pages: true
   # - tooltipster-links
   - embed_file # A way to embed a file present in your docs, see https://github.com/Mara-Li/mkdocs_embed_file_plugins
-  # - git-revision-date-localized:
-  #     type: datetime
-  #     # enable_creation_date: true
-  #     locale: zh
+  - git-revision-date-localized:
+      type: datetime
+      # enable_creation_date: true
+      locale: zh
   - callouts # Convert Obsidian callouts to mkdocs admonitions, see https://github.com/sondregronas/mkdocs-callouts
 extra_javascript:
   # - assets/js/mathjax.js
